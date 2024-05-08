@@ -1,0 +1,18 @@
+version: 2
+
+sources: 
+  - name: raw
+    schema: gz_raw_data
+    tables: 
+      - name: product
+        identifier: raw_gz_product
+        description: Transformed from raw_gz_product
+      - name: sales
+        identifier: raw_gz_sales
+        freshness: 
+         warn_after: {count: 90, period: day}
+        loaded_at_field: "CAST(date_date AS TIMESTAMP)"
+        description: Tranformed from raw_gz_sales
+      - name: ship
+        identifier: raw_gz_ship
+        description: Tranformed from raw_gz_ship
